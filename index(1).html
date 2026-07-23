@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVEO® | 德斐体育咨询有限公司 — 专业运动品牌</title>
+  <meta name="description" content="UVEO® 德斐体育咨询有限公司，专注运动用品零售、体育设施建设与维修、体育咨询服务。">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ============================================
+       CSS 变量 & 全局重置
+       ============================================ */
+    :root {
+      --color-bg-dark: #ffffff;
+      --color-bg-darker: #f0f4f0;
+      --color-bg-card: #f7faf7;
+      --color-bg-card-hover: #edf5ed;
+      --color-accent: #00a86b;
+      --color-accent-hover: #00c97b;
+      --color-accent-red: #00875a;
+      --color-text-white: #111827;
+      --color-text-light: #374151;
+      --color-text-muted: #6b7280;
+      --color-border: #d1ddd1;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      --max-width: 1280px;
+      --nav-height: 72px;
+      --transition-base: 0.3s ease;
+      --transition-bounce: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg-dark);
+      color: #374151;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-base);
+    }
+
+    ul { list-style: none; }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       滚动动画（淡入上移）
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       导航栏
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 2px solid #00a86b;
+      transition: background var(--transition-base);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Logo 图片样式 */
+    .logo-img {
+      height: 150px;
+      width: auto;
+      object-fit: contain;
+      transition: transform var(--transition-base);
+    }
+    .logo-img:hover { transform: scale(1.05); }
+    .logo-img-footer { height: 36px; margin-bottom: 12px; }
+
+    .logo-brand {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: 2px;
+    }
+
+    .logo-brand sup {
+      font-size: 0.5em;
+      color: var(--color-accent);
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* 一级菜单 */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #374151;
+      border-radius: 6px;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #00a86b;
+      background: rgba(0, 168, 107, 0.08);
+    }
+
+    .nav-link .arrow {
+      font-size: 0.65rem;
+      transition: transform var(--transition-base);
+    }
+
+    .nav-item:hover .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* 二级下拉菜单 */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: #ffffff;
+      border: 1px solid #d1ddd1;
+      border-radius: 10px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all var(--transition-base);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      color: #374151;
+      transition: all var(--transition-base);
+    }
+
+    .dropdown-link i {
+      width: 18px;
+      text-align: center;
+      color: var(--color-accent);
+      font-size: 0.85rem;
+    }
+
+    .dropdown-link:hover {
+      background: rgba(0, 168, 107, 0.08);
+      color: #00a86b;
+      padding-left: 24px;
+    }
+
+    /* 联系我们按钮 */
+    .nav-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      color: var(--color-text-white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .nav-contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 168, 107, 0.35);
+    }
+
+    /* 汉堡菜单（移动端） */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #111827;
+      border-radius: 2px;
+      transition: all var(--transition-base);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ============================================
+       Hero 区
+       ============================================ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    /* 动态背景层 */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(240,244,240,0.85) 40%, rgba(0,168,107,0.12) 100%),
+        url('https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=1920&q=80') center/cover no-repeat;
+      filter: brightness(1.1) saturate(0.7);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    /* 运动动感线条装饰 */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 168, 107, 0.15);
+      animation: pulseLine 4s ease-in-out infinite;
+    }
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      left: -8%;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 168, 107, 0.12);
+      animation: pulseLine 5s ease-in-out infinite 1s;
+    }
+    .hero-line-1,
+    .hero-line-2,
+    .hero-line-3 {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(0,168,107,0.18), transparent);
+      height: 2px;
+    }
+    .hero-line-1 {
+      top: 25%;
+      right: 0;
+      width: 45%;
+      transform: rotate(-12deg);
+      animation: lineSlide 3s ease-in-out infinite;
+    }
+    .hero-line-2 {
+      top: 55%;
+      right: 5%;
+      width: 35%;
+      transform: rotate(8deg);
+      animation: lineSlide 4s ease-in-out infinite 0.5s;
+    }
+    .hero-line-3 {
+      bottom: 20%;
+      left: 5%;
+      width: 40%;
+      transform: rotate(-5deg);
+      animation: lineSlide 3.5s ease-in-out infinite 1s;
+    }
+    @keyframes pulseLine {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes lineSlide {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    /* 装饰几何图形 */
+    .hero-decor {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,168,107,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-decor-1 {
+      width: 600px; height: 600px;
+      top: -200px; right: -100px;
+    }
+    .hero-decor-2 {
+      width: 400px; height: 400px;
+      bottom: -100px; left: -100px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(0, 168, 107, 0.1);
+      border: 1px solid rgba(0, 168, 107, 0.25);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease 0.2s both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      animation: fadeInDown 0.8s ease 0.4s both;
+    }
+
+    .hero-title .brand-highlight {
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #4b5563;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInDown 0.8s ease 0.6s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInDown 0.8s ease 0.8s both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 通用按钮样式 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-family: var(--font-family);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      color: var(--color-text-white);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 168, 107, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #111827;
+      border: 2px solid #00a86b;
+    }
+    .btn-outline:hover {
+      background: #00a86b;
+      border-color: #00a86b;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    /* 向下滚动提示 */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator i {
+      font-size: 1.5rem;
+      color: rgba(0, 168, 107, 0.5);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-12px); }
+      60% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    /* ============================================
+       通用板块样式
+       ============================================ */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      background: rgba(0, 168, 107, 0.08);
+      border: 1px solid rgba(0, 168, 107, 0.2);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       核心业务入口（3张卡片）
+       ============================================ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 40px 28px;
+      text-align: center;
+      transition: all var(--transition-bounce);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00a86b, #00c97b);
+      transform: scaleX(0);
+      transition: transform var(--transition-bounce);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: #f0faf5;
+      box-shadow: 0 16px 40px rgba(0, 168, 107, 0.12);
+      border-color: rgba(0, 168, 107, 0.3);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: rgba(0, 168, 107, 0.1);
+      border-radius: 16px;
+      font-size: 1.8rem;
+      color: var(--color-accent);
+      transition: all var(--transition-base);
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--color-accent);
+      color: var(--color-text-white);
+      transform: scale(1.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      background: rgba(0, 168, 107, 0.1);
+      border: 1px solid rgba(0, 168, 107, 0.25);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #00a86b;
+      margin-bottom: 16px;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      transition: gap var(--transition-base);
+    }
+
+    .service-link:hover {
+      gap: 10px;
+    }
+
+    /* ============================================
+       数据统计条
+       ============================================ */
+    .stats-bar {
+      background: linear-gradient(135deg, #f0f4f0, #ffffff);
+      border-top: 2px solid rgba(0,168,107,0.15);
+      border-bottom: 2px solid rgba(0,168,107,0.15);
+      padding: 60px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 12px;
+    }
+
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+
+
+
+    /* 统计条运动条纹装饰 */
+    .stats-bar {
+      position: relative;
+    }
+    .stats-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 168, 107, 0.03) 40px,
+        rgba(0, 168, 107, 0.03) 42px
+      );
+      pointer-events: none;
+    }
+
+    /* ============================================
+       项目案例
+       ============================================ */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .case-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all var(--transition-bounce);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .case-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 168, 107, 0.12);
+      border-color: rgba(0, 168, 107, 0.3);
+    }
+
+    .case-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .case-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .case-card:hover .case-img img {
+      transform: scale(1.08);
+    }
+
+    .case-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 4px 12px;
+      background: rgba(0, 168, 107, 0.9);
+      color: var(--color-text-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 50px;
+    }
+
+    .case-body {
+      padding: 24px;
+    }
+
+    .case-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .case-body p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .case-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    .case-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ============================================
+       动态与百科混合区
+       ============================================ */
+    .news-wiki-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .news-column h3,
+    .wiki-column h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .news-column h3 i,
+    .wiki-column h3 i {
+      color: var(--color-accent);
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      transition: all var(--transition-bounce);
+    }
+
+    .news-item:hover {
+      transform: translateX(6px);
+      border-color: rgba(0, 168, 107, 0.3);
+    }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 56px;
+      text-align: center;
+    }
+
+    .news-date .day {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+
+    .news-date .month {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .news-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .news-info p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .wiki-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      transition: all var(--transition-bounce);
+    }
+
+    .wiki-item:hover {
+      transform: translateX(6px);
+      border-color: rgba(0, 168, 107, 0.3);
+    }
+
+    .wiki-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 168, 107, 0.1);
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: var(--color-accent);
+    }
+
+    .wiki-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .wiki-info p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       关于品牌简介
+       ============================================ */
+    .about-section {
+      background: #f0f4f0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .about-text h2 .brand-highlight {
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .about-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #ffffff;
+      border: 1px solid #d1ddd1;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+
+    .about-badge i {
+      color: var(--color-accent);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #d1ddd1;
+    }
+
+    .about-img-wrapper img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .about-float-card {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: linear-gradient(135deg, #00a86b, #00c97b);
+      padding: 20px 28px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 168, 107, 0.25);
+    }
+
+    .about-float-card .number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-text-white);
+    }
+
+    .about-float-card .label {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ============================================
+       合作伙伴
+       ============================================ */
+    .partners-track {
+      overflow: hidden;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .partners-track::before,
+    .partners-track::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+    }
+    .partners-track::before {
+      left: 0;
+      background: linear-gradient(to right, #ffffff, transparent);
+    }
+    .partners-track::after {
+      right: 0;
+      background: linear-gradient(to left, #ffffff, transparent);
+    }
+
+    .partners-scroll {
+      display: flex;
+      gap: 40px;
+      animation: scrollPartners 25s linear infinite;
+      width: max-content;
+    }
+
+    .partner-logo {
+      flex-shrink: 0;
+      width: 160px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .partner-logo:hover {
+      border-color: rgba(0, 168, 107, 0.3);
+      color: var(--color-text-white);
+    }
+
+    @keyframes scrollPartners {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============================================
+       人才招聘横幅
+       ============================================ */
+    .recruit-banner {
+      background: linear-gradient(135deg, #f0faf5 0%, rgba(0,168,107,0.06) 100%);
+      border-top: 2px solid rgba(0,168,107,0.15);
+      border-bottom: 2px solid rgba(0,168,107,0.15);
+      padding: 60px 0;
+    }
+
+    .recruit-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .recruit-text h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .recruit-text p {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+    }
+
+    .recruit-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .recruit-tag {
+      padding: 6px 14px;
+      background: rgba(0, 168, 107, 0.08);
+      border: 1px solid rgba(0, 168, 107, 0.2);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: var(--color-accent);
+    }
+
+    /* ============================================
+       联系我们（模态 / 锚点区）
+       ============================================ */
+    .contact-section {
+      background: #f0f4f0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-row-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 168, 107, 0.1);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: var(--color-accent);
+    }
+
+    .contact-row-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .contact-row-text p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: #ffffff;
+      border: 1px solid #d1ddd1;
+      border-radius: 10px;
+      color: #111827;
+      font-size: 0.95rem;
+      font-family: var(--font-family);
+      outline: none;
+      transition: border-color var(--transition-base);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--color-accent);
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================
+       页脚
+       ============================================ */
+    .footer {
+      background: #111827;
+      border-top: 3px solid #00a86b;
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand .logo-brand {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      transition: all var(--transition-base);
+    }
+
+    .footer-social a:hover {
+      background: #00a86b;
+      border-color: #00a86b;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      transition: all var(--transition-base);
+    }
+
+    .footer-col ul li a:hover {
+      color: #00c97b;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================
+       返回顶部按钮
+       ============================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00a86b;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all var(--transition-base);
+      z-index: 999;
+      box-shadow: 0 8px 25px rgba(0, 168, 107, 0.3);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ============================================
+       响应式适配
+       ============================================ */
+    @media (max-width: 1024px) {
+      .services-grid,
+      .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --nav-height: 64px;
+      }
+
+      .logo-img {
+        height: 36px;
+      }
+
+      /* 移动端菜单 */
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        gap: 0;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform var(--transition-base);
+      }
+
+      .nav-menu.open {
+        transform: translateX(0);
+      }
+
+      .nav-item {
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .nav-link {
+        padding: 14px 0;
+        font-size: 1.05rem;
+        justify-content: space-between;
+      }
+
+      .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 16px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+
+      .dropdown.open {
+        max-height: 300px;
+      }
+
+      .nav-contact-btn {
+        margin-top: 16px;
+        justify-content: center;
+      }
+
+      .services-grid,
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-wiki-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .recruit-inner {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .recruit-tags {
+        justify-content: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .about-float-card {
+        right: 10px;
+        bottom: -10px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+
+    /* ============================================
+       运动风格斜线分隔符
+       ============================================ */
+    .sport-divider {
+      position: relative;
+      height: 40px;
+      overflow: hidden;
+      background: transparent;
+    }
+    .sport-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 12px,
+        #00a86b 12px,
+        #00a86b 24px,
+        transparent 24px,
+        transparent 36px
+      );
+      opacity: 0.25;
+    }
+    .sport-divider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -5%;
+      width: 110%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        transparent 48%,
+        rgba(0, 168, 107, 0.06) 48%,
+        rgba(0, 168, 107, 0.06) 52%,
+        transparent 52%
+      );
+    }
+
+    /* 卡片运动线条装饰 */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(
+        135deg,
+        transparent 50%,
+        rgba(0, 168, 107, 0.06) 50%
+      );
+      pointer-events: none;
+    }
+
+    .case-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #00a86b);
+      border-radius: 0 16px 0 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .case-card:hover::after {
+      opacity: 1;
+    }
+
+    /* 板块标题下方的运动线条装饰 */
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      margin: 20px auto 0;
+      background: linear-gradient(90deg, #00a86b, #00c97b, transparent);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       导航栏
+       ============================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a href="#hero" class="logo">
+        <img src="03020bb902bc84452622efb3bcba893f.png" alt="UVEO® 德斐体育" class="logo-img">
+      </a>
+
+      <!-- 一级菜单 + 二级下拉 -->
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="#hero" class="nav-link active">首页</a>
+        </li>
+
+        <!-- 产品与服务 -->
+        <li class="nav-item">
+          <a class="nav-link" href="#services">
+            产品与服务 <i class="fas fa-chevron-down arrow"></i>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#services" class="dropdown-link"><i class="fas fa-shopping-bag"></i> 运动用品</a></li>
+            <li><a href="#services" class="dropdown-link"><i class="fas fa-hard-hat"></i> 体育设施建设与维修</a></li>
+            <li><a href="#services" class="dropdown-link"><i class="fas fa-trophy"></i> 赛事与体测咨询</a></li>
+          </ul>
+        </li>
+
+        <!-- 项目案例 -->
+        <li class="nav-item">
+          <a class="nav-link" href="#cases">
+            项目案例 <i class="fas fa-chevron-down arrow"></i>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#cases" class="dropdown-link"><i class="fas fa-images"></i> 经典项目展示</a></li>
+            <li><a href="#partners" class="dropdown-link"><i class="fas fa-handshake"></i> 合作伙伴</a></li>
+          </ul>
+        </li>
+
+        <!-- 资讯百科 -->
+        <li class="nav-item">
+          <a class="nav-link" href="#news-wiki">
+            资讯百科 <i class="fas fa-chevron-down arrow"></i>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#news-wiki" class="dropdown-link"><i class="fas fa-newspaper"></i> 品牌动态</a></li>
+            <li><a href="#news-wiki" class="dropdown-link"><i class="fas fa-book-open"></i> 运动百科</a></li>
+          </ul>
+        </li>
+
+        <!-- 关于我们 -->
+        <li class="nav-item">
+          <a class="nav-link" href="#about">
+            关于我们 <i class="fas fa-chevron-down arrow"></i>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#about" class="dropdown-link"><i class="fas fa-building"></i> 品牌故事</a></li>
+            <li><a href="#recruit" class="dropdown-link"><i class="fas fa-user-plus"></i> 人才招聘</a></li>
+          </ul>
+        </li>
+
+        <!-- 移动端联系我们按钮（PC端在导航右侧） -->
+        <li class="nav-item" style="display:none;" id="mobileContact">
+          <a href="#contact" class="nav-contact-btn">
+            <i class="fas fa-phone-alt"></i> 联系我们
+          </a>
+        </li>
+      </ul>
+
+      <!-- PC端联系我们按钮 + 汉堡菜单 -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="#contact" class="nav-contact-btn" id="desktopContact">
+          <i class="fas fa-phone-alt"></i> 联系我们
+        </a>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       Hero 区
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <!-- 运动动感线条装饰 -->
+    <div class="hero-lines">
+      <div class="hero-line-1"></div>
+      <div class="hero-line-2"></div>
+      <div class="hero-line-3"></div>
+    </div>
+    <div class="hero-decor hero-decor-1"></div>
+    <div class="hero-decor hero-decor-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge" style="color:#00a86b;">
+        <i class="fas fa-bolt"></i> UVEO® — 专业运动解决方案
+      </div>
+      <h1 class="hero-title">
+        以运动之名<br>
+        铸就 <span class="brand-highlight">UVEO®</span> 品质传奇
+      </h1>
+      <p class="hero-subtitle">
+        德斐体育咨询有限公司深耕于运动产业，提供运动用品零售、体育设施建设维修、体育咨询一站式服务。
+      </p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> 了解服务
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> 联系我们
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ============================================
+       核心业务入口
+       ============================================ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><i class="fas fa-th-large"></i> 核心业务</div>
+        <h2 class="section-title">三大领域，全链覆盖</h2>
+        <p class="section-desc">UVEO® 为个人消费者、企业客户及政府机构提供覆盖运动全链条的专业服务</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 卡片 1：运动用品 -->
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-shopping-bag"></i></div>
+          <h3>运动用品零售</h3>
+          <p>精选全球优质运动装备，涵盖跑步、篮球、健身、户外等多品类，为运动爱好者提供专业级装备选择。</p>
+          <a href="#" class="service-link">
+            探索产品 <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- 卡片 2：设施建设与维修 -->
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+          <div class="service-badge"><i class="fas fa-clock"></i> 24h 紧急报修</div>
+          <h3>体育设施建设与维修</h3>
+          <p>从塑胶跑道、人造草皮到硅PU球场，承接各类体育场地新建与翻新工程，提供全天候紧急维修服务。</p>
+          <a href="#" class="service-link">
+            查看案例 <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- 卡片 3：赛事与体测咨询 -->
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-trophy"></i></div>
+          <h3>体育咨询</h3>
+          <p>提供体育赛事全案策划、执行管理，以及专业体质测试与运动健康评估服务，助力全民健身事业。</p>
+          <a href="#" class="service-link">
+            了解详情 <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       数据统计条
+       ============================================ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-number" data-target="33">0</div>
+          <div class="stat-label">年行业深耕</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">完工项目（+）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="200">0</div>
+          <div class="stat-label">合作单位（+）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">赛事策划（+）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 运动风格分隔线 -->
+  <div class="sport-divider"></div>
+
+  <!-- ============================================
+       项目案例精选
+       ============================================ -->
+  <section class="section" id="cases">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><i class="fas fa-award"></i> 项目案例</div>
+        <h2 class="section-title">精选工程，实力见证</h2>
+        <p class="section-desc">每一个项目都是 UVEO® 品质的最佳背书</p>
+      </div>
+
+      <div class="cases-grid">
+        <!-- 案例 1 -->
+        <div class="case-card reveal">
+          <div class="case-img">
+            <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80" alt="大学体育馆建设">
+            <span class="case-tag">场馆建设</span>
+          </div>
+          <div class="case-body">
+            <h3>广东多所高校综合体育馆、体育场建设</h3>
+            <p>承建总面积达 8,000 平方米的综合体育馆，涵盖室内篮球场、羽毛球场及健身中心，采用高标准硅PU材料与专业运动地板系统。</p>
+            <div class="case-meta">
+              <span><i class="fas fa-map-marker-alt"></i> 广东</span>
+              <span><i class="fas fa-calendar-alt"></i> 2025</span>
+              <span><i class="fas fa-ruler-combined"></i> 8,000 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 2 -->
+        <div class="case-card reveal">
+          <div class="case-img">
+            <img src="1.png" alt="社区跑道维修">
+            <span class="case-tag">跑道翻新</span>
+          </div>
+          <div class="case-body">
+            <h3>校园智慧健身跑道翻新</h3>
+            <p>为教育集团旗下学校翻新全长 2.4 公里的环形塑胶跑道，融入智能计步芯片与LED夜光标线系统，服务超过 5,000 名师生。</p>
+            <div class="case-meta">
+              <span><i class="fas fa-map-marker-alt"></i> 广东</span>
+              <span><i class="fas fa-calendar-alt"></i> 2025</span>
+              <span><i class="fas fa-road"></i> 2.4 km</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 3 -->
+        <div class="case-card reveal">
+          <div class="case-img">
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&q=80" alt="马拉松赛事承办">
+            <span class="case-tag">赛事策划</span>
+          </div>
+          <div class="case-body">
+            <h3>环湖半程马拉松赛</h3>
+            <p>全程策划并执行环湖半程马拉松赛事，涵盖赛道规划、安保协调、计时系统及媒体传播，吸引众多选手参赛。</p>
+            <div class="case-meta">
+              <span><i class="fas fa-map-marker-alt"></i> 广东</span>
+              <span><i class="fas fa-calendar-alt"></i> 2024</span>
+              <span><i class="fas fa-users"></i> 12,000 人</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       动态与百科混合区
+       ============================================ -->
+  <section class="section" id="news-wiki" style="background:var(--color-bg-darker);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><i class="fas fa-rss"></i> 资讯百科</div>
+        <h2 class="section-title">品牌动态 & 运动百科</h2>
+        <p class="section-desc">获取 UVEO® 最新资讯，掌握专业运动与场地维护知识</p>
+      </div>
+
+      <div class="news-wiki-grid reveal">
+        <!-- 品牌动态 -->
+        <div class="news-column">
+          <h3><i class="fas fa-newspaper"></i> 品牌动态</h3>
+
+          <div class="news-item">
+            <div class="news-date">
+              <div class="day">18</div>
+              <div class="month">2026.07</div>
+            </div>
+            <div class="news-info">
+              <h4>UVEO® 亮相中国国际体育用品博览会</h4>
+              <p>德斐体育携旗下 UVEO® 品牌全新系列产品参展，展示了自主研发的球场材料与智能运动监测设备，受到业界广泛关注。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">
+              <div class="day">05</div>
+              <div class="month">2026.06</div>
+            </div>
+            <div class="news-info">
+              <h4>UVEO® 签约中小学体测项目</h4>
+              <p>德斐体育中标青少年体质监测与评估项目，为中小学生提供标准化体测服务及数据分析报告。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 运动百科 -->
+        <div class="wiki-column">
+          <h3><i class="fas fa-book-open"></i> 运动百科</h3>
+
+          <div class="wiki-item">
+            <div class="wiki-icon"><i class="fas fa-seedling"></i></div>
+            <div class="wiki-info">
+              <h4>如何科学保养人工草皮足球场？</h4>
+              <p>人工草皮虽然维护成本低于天然草皮，但仍需定期梳理纤维、补充填充颗粒、清理杂物。建议每季度进行一次深度清洁，并在高温季节注意洒水降温，以延长使用寿命至 8-10 年。</p>
+            </div>
+          </div>
+
+          <div class="wiki-item">
+            <div class="wiki-icon"><i class="fas fa-running"></i></div>
+            <div class="wiki-info">
+              <h4>塑胶跑道日常维护的五个关键要点</h4>
+              <p>避免车辆碾压、定期清扫落叶、雨后检查排水沟、每年检测面层厚度、及时修补裂缝——掌握这五点，可显著延长塑胶跑道的使用年限，降低整体维护成本。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 运动风格分隔线 -->
+  <div class="sport-divider"></div>
+
+  <!-- ============================================
+       关于品牌简介
+       ============================================ -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-tag"><i class="fas fa-building"></i> 关于我们</div>
+          <h2>
+            <span class="brand-highlight">UVEO®</span> 背后的力量<br>
+            德斐体育咨询有限公司
+          </h2>
+          <p>
+            德斐体育咨询有限公司成立于广东省广州市，是一家集运动用品零售、体育设施建造、场地建设与维修、体育服务咨询于一体的综合性体育服务企业。
+          </p>
+          <p>
+            公司秉承"专业铸就品质，运动点亮生活"的核心理念，以自有品牌 UVEO® 为载体，为学校、社区、政府机关及企事业单位提供一站式运动解决方案。十余年来，我们已完成超过 500 个工程项目，服务覆盖华东、华南、华北多个省市。
+          </p>
+          <div class="about-badges">
+            <div class="about-badge"><i class="fas fa-certificate"></i> 国家体育设施施工资质</div>
+            <div class="about-badge"><i class="fas fa-shield-alt"></i> ISO 9001 质量认证</div>
+            <div class="about-badge"><i class="fas fa-leaf"></i> 绿色环保材料认证</div>
+            <div class="about-badge"><i class="fas fa-award"></i> 中国体育用品协会会员</div>
+          </div>
+        </div>
+
+        <div class="about-visual reveal">
+          <div class="about-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="UVEO 团队">
+          </div>
+          <div class="about-float-card">
+            <div class="number">30+</div>
+            <div class="label">年专业经验</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       合作伙伴展示
+       ============================================ -->
+  <section class="section" id="partners">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><i class="fas fa-handshake"></i> 合作伙伴</div>
+        <h2 class="section-title">携手同行，共创辉煌</h2>
+        <p class="section-desc">UVEO® 与众多知名院校、政府机构及企业建立了长期深度合作关系</p>
+      </div>
+    </div>
+
+    <div class="partners-track reveal">
+      <div class="partners-scroll" id="partnersScroll">
+        <div class="partner-logo"><i class="fas fa-university"></i>&nbsp; 松山湖华为</div>
+        <div class="partner-logo"><i class="fas fa-landmark"></i>&nbsp; 南方教育集团</div>
+        <div class="partner-logo"><i class="fas fa-building"></i>&nbsp; 广州技术师范大学</div>
+        <div class="partner-logo"><i class="fas fa-school"></i>&nbsp; 广东轻工学院</div>
+        <div class="partner-logo"><i class="fas fa-city"></i>&nbsp; 广东环保学院</div>
+        <div class="partner-logo"><i class="fas fa-hospital"></i>&nbsp; 清远体育馆</div>
+        <div class="partner-logo"><i class="fas fa-industry"></i>&nbsp; 南山外国语学院</div>
+        <div class="partner-logo"><i class="fas fa-graduation-cap"></i>&nbsp; 珠海体育中心</div>
+        <!-- 重复一组实现无缝滚动 -->
+        <div class="partner-logo"><i class="fas fa-university"></i>&nbsp; 松山湖华为</div>
+        <div class="partner-logo"><i class="fas fa-landmark"></i>&nbsp; 南方教育集团</div>
+        <div class="partner-logo"><i class="fas fa-building"></i>&nbsp; 广州技术师范大学</div>
+        <div class="partner-logo"><i class="fas fa-school"></i>&nbsp; 广东轻工学院</div>
+        <div class="partner-logo"><i class="fas fa-city"></i>&nbsp; 广东环保学院</div>
+        <div class="partner-logo"><i class="fas fa-hospital"></i>&nbsp; 清远体育馆</div>
+        <div class="partner-logo"><i class="fas fa-industry"></i>&nbsp; 南山外国语学院</div>
+        <div class="partner-logo"><i class="fas fa-graduation-cap"></i>&nbsp; 珠海体育中心</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       人才招聘横幅
+       ============================================ -->
+  <section class="recruit-banner" id="recruit">
+    <div class="container">
+      <div class="recruit-inner reveal">
+        <div class="recruit-text">
+          <h2><i class="fas fa-user-plus" style="color:var(--color-accent);"></i> 加入 UVEO® 团队</h2>
+          <p>我们期待每一位热爱运动、追求卓越的伙伴加入德斐体育，共同推动中国运动产业发展。</p>
+          <div class="recruit-tags">
+            <span class="recruit-tag">🏀 项目经理</span>
+            <span class="recruit-tag">📐 场地设计师</span>
+            <span class="recruit-tag">📊 赛事运营</span>
+            <span class="recruit-tag">🏋️ 体测顾问</span>
+            <span class="recruit-tag">💼 销售代表</span>
+          </div>
+        </div>
+        <a href="mailto:hr@dephi-sports.com" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> 投递简历
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       联系我们
+       ============================================ -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><i class="fas fa-phone-alt"></i> 联系我们</div>
+        <h2 class="section-title">与 UVEO® 取得联系</h2>
+        <p class="section-desc">无论您是咨询产品、洽谈项目还是寻求服务支持，我们随时为您解答</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <!-- 联系信息 -->
+        <div class="contact-info-list">
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-building"></i></div>
+            <div class="contact-row-text">
+              <h4>公司名称</h4>
+              <p>广州德斐体育咨询有限公司</p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-row-text">
+              <h4>公司地址</h4>
+              <p>广州市黄埔区永和街道贤江路</p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-row-text">
+              <h4>联系电话</h4>
+              <p>137-1098-6758 &nbsp;|&nbsp; 186-8102-9186</p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-row-text">
+              <h4>电子邮箱</h4>
+              <p>lwldf@outlook.com</p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-row-text">
+              <h4>工作时间</h4>
+              <p>周一至周五 9:00 - 18:00 &nbsp;|&nbsp; 场地维修 24 小时在线</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 联系表单 -->
+        <form class="contact-form" onsubmit="handleFormSubmit(event)">
+          <input type="text" placeholder="您的姓名" required>
+          <input type="tel" placeholder="联系电话" required>
+          <input type="email" placeholder="电子邮箱">
+          <input type="text" placeholder="咨询主题（如：场地建设、运动用品、赛事策划）">
+          <textarea placeholder="请详细描述您的需求，我们将在 24 小时内回复您…" required></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <i class="fas fa-paper-plane"></i> 提交咨询
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       页脚
+       ============================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- 品牌信息 -->
+        <div class="footer-brand">
+          <img src="03020bb902bc84452622efb3bcba893f.png" alt="UVEO® 德斐体育" class="logo-img logo-img-footer">
+          <p>德斐体育咨询有限公司——深耕运动产业，以专业铸就品质，以创新引领未来。UVEO® 致力于为每一位运动爱好者和企业客户提供卓越的产品与服务。</p>
+          <div class="footer-social">
+            <a href="#" title="微信"><i class="fab fa-weixin"></i></a>
+            <a href="#" title="微博"><i class="fab fa-weibo"></i></a>
+            <a href="#" title="抖音"><i class="fab fa-tiktok"></i></a>
+            <a href="#" title="小红书"><i class="fas fa-book"></i></a>
+            <a href="#" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a>
+          </div>
+        </div>
+
+        <!-- 产品服务 -->
+        <div class="footer-col">
+          <h4>产品与服务</h4>
+          <ul>
+            <li><a href="#services">运动用品零售</a></li>
+            <li><a href="#services">体育设施建设</a></li>
+            <li><a href="#services">场地维修服务</a></li>
+            <li><a href="#services">赛事策划执行</a></li>
+            <li><a href="#services">体质测试咨询</a></li>
+          </ul>
+        </div>
+
+        <!-- 快速链接 -->
+        <div class="footer-col">
+          <h4>快速链接</h4>
+          <ul>
+            <li><a href="#cases">项目案例</a></li>
+            <li><a href="#partners">合作伙伴</a></li>
+            <li><a href="#news-wiki">品牌动态</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#recruit">人才招聘</a></li>
+          </ul>
+        </div>
+
+        <!-- 联系方式 -->
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul>
+            <li><a href="tel:13710986758"><i class="fas fa-phone-alt"></i>&nbsp; 13710986758</a></li>
+            <li><a href="mailto:contact@dephi-sports.com"><i class="fas fa-envelope"></i>&nbsp; contact@dephi-sports.com</a></li>
+            <li><a href="#contact"><i class="fas fa-map-marker-alt"></i>&nbsp; 广州市黄埔区永和街道贤江路</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 底部版权 -->
+      <div class="footer-bottom">
+        <p>© 2026 广州德斐体育咨询有限公司 UVEO® 版权所有</p>
+        <p>
+          <a href="#" style="color:var(--color-text-muted);">隐私政策</a>
+          &nbsp;|&nbsp;
+          <a href="#" style="color:var(--color-text-muted);">用户协议</a>
+          &nbsp;|&nbsp;
+          <a href="#" style="color:var(--color-text-muted);">沪ICP备2024XXXXXX号</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" id="backToTop" title="返回顶部">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ============================================
+       JavaScript
+       ============================================ -->
+  <script>
+    /* ============================================
+       导航栏交互
+       ============================================ */
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const mobileContact = document.getElementById('mobileContact');
+    const desktopContact = document.getElementById('desktopContact');
+
+    // 汉堡菜单切换
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('open');
+      // 移动端显示联系我们按钮
+      if (navMenu.classList.contains('open')) {
+        mobileContact.style.display = 'block';
+      }
+    });
+
+    // 移动端下拉菜单点击展开
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      const dropdown = item.querySelector('.dropdown');
+      if (dropdown && link) {
+        link.addEventListener('click', (e) => {
+          // 仅在移动端生效
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            // 关闭其他已展开的下拉
+            document.querySelectorAll('.dropdown.open').forEach(d => {
+              if (d !== dropdown) d.classList.remove('open');
+            });
+            dropdown.classList.toggle('open');
+          }
+        });
+      }
+    });
+
+    // 点击菜单外关闭
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+      }
+    });
+
+    // 响应式切换时隐藏移动端联系方式
+    function handleResize() {
+      if (window.innerWidth > 768) {
+        mobileContact.style.display = 'none';
+        desktopContact.style.display = 'inline-flex';
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+      } else {
+        desktopContact.style.display = 'none';
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    /* ============================================
+       导航栏滚动效果 & 高亮当前板块
+       ============================================ */
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id], .stats-bar');
+
+    window.addEventListener('scroll', () => {
+      // 导航栏背景加深
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.99)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.97)';
+      }
+
+      // 返回顶部按钮
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+
+      // 高亮当前导航
+      let current = '';
+      document.querySelectorAll('section[id]').forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 返回顶部
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ============================================
+       Intersection Observer — 滚动淡入动画
+       ============================================ */
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    /* ============================================
+       数据统计计数器动画
+       ============================================ */
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          let count = 0;
+          const increment = Math.max(1, Math.floor(target / 60));
+          const timer = setInterval(() => {
+            count += increment;
+            if (count >= target) {
+              count = target;
+              clearInterval(timer);
+            }
+            el.textContent = count;
+          }, 30);
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(el => statsObserver.observe(el));
+
+    /* ============================================
+       表单提交处理
+       ============================================ */
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check-circle"></i> 提交成功！我们将尽快联系您';
+      btn.style.background = '#22c55e';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+
+    /* ============================================
+       平滑滚动到锚点（兼容处理）
+       ============================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = navbar.offsetHeight + 10;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+
+          // 关闭移动端菜单
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1386,7 +1386,6 @@
         overflow-y: auto;
         transform: translateX(100%);
         transition: transform var(--transition-base);
-        z-index: 9999;   /* 👈 加上这一行，确保在首页上方 */
       }
 
       .nav-menu.open {
@@ -2323,28 +2322,5 @@
       });
     });
   </script>
- // 1. 获取汉堡按钮和导航菜单
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');   // 改成你实际的菜单容器
-
-  // 2. 确保元素存在
-  if (hamburger && navMenu) {
-    // 点击汉堡 → 切换 active 类
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');    // 触发 CSS 动画（三条杠变 ✕）
-      navMenu.classList.toggle('active'); // 显示/隐藏菜单
-    });
-
-    // 3.（可选）点击菜单项后自动关闭
-    document.querySelectorAll('.nav-menu a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-  } else {
-    console.warn('找不到 .hamburger 或 .nav-menu，请检查 class 名称');
-  }
-</script>
 </body>
 </html>

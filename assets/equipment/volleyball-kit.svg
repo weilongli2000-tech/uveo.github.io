@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <defs><pattern id="net" width="21" height="23" patternUnits="userSpaceOnUse"><path d="M0 0h21v23" stroke="#9da899" stroke-width="1.5"/></pattern><clipPath id="ball"><circle cx="519" cy="406" r="88"/></clipPath></defs>
+  <path fill="#f1f1ed" d="M0 0h800v600H0z"/><ellipse cx="414" cy="499" rx="258" ry="23" fill="#dedfd8"/>
+  <path d="M196 193h424v192H196z" fill="url(#net)"/><path d="M191 195c145 13 282 13 436 0" stroke="#fafbf7" stroke-width="16"/><path d="M191 384c146 9 287 9 436 0" stroke="#c0c9b9" stroke-width="5"/>
+  <path d="M189 173v317m438-317v317" stroke="#374738" stroke-width="13" stroke-linecap="round"/><path d="M189 318v112m438-112v112" stroke="#d73c20" stroke-width="19"/>
+  <path d="m168 491 44 1m394-1 43 1" stroke="#3e4b3c" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="519" cy="406" r="88" fill="#faf9ee" stroke="#d4d3c2" stroke-width="3"/>
+  <g clip-path="url(#ball)"><path d="M452 331c28-8 58-7 84 5 8 30 5 58-8 82-31-3-59-12-83-34Z" fill="#e4b94f"/><path d="M536 336c23 5 41 17 57 35l17 46c-25 20-53 30-84 29-10-21-11-43 2-67Z" fill="#3b5145"/>
+  <path d="M526 445c-18 21-39 35-67 44l61 21 53-27c4-15 6-30 3-45Z" fill="#e4b94f"/>
+  <path d="M444 384c25 22 53 31 84 34m8-82c6 31 4 58-8 82-10 23-10 46-2 66m-80-128c44 4 66 12 89 28m-98 24c24 15 51 24 82 27m35-93c-4 32-9 53-21 70m43-58c-6 26-15 46-29 63m-89 42c28-1 55-16 77-39" stroke="#a0a997" stroke-width="2"/></g>
+</svg>

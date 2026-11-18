@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <defs><pattern id="mesh" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 0h20v20" stroke="#9ca89c" stroke-width="1.5"/></pattern><linearGradient id="frame" x1="200" y1="200" x2="500" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#d3dad0"/></linearGradient></defs>
+  <path fill="#f1f1ed" d="M0 0h800v600H0z"/><ellipse cx="403" cy="489" rx="265" ry="25" fill="#dedfd8"/>
+  <path d="m200 452 86-97h347l-87 98z" fill="#e4e8df" stroke="#a7b1a3" stroke-width="2"/>
+  <path d="m200 223 86-62h347l-87 62z" fill="url(#mesh)" stroke="#9ca89c" stroke-width="2"/>
+  <path d="M200 223v229l86-97V161zm346 0v230l87-98V161z" fill="url(#mesh)" stroke="#9ca89c" stroke-width="2"/>
+  <path d="M286 161h347v194H286z" fill="url(#mesh)" stroke="#9ca89c" stroke-width="2"/>
+  <path d="M286 355h347M286 161v194m347-194v194" stroke="#c4cdc0" stroke-width="9" stroke-linecap="round"/>
+  <path d="m200 452 86-97m260 98 87-98m-433 97h346" stroke="#c3ccbF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M200 455V223h346v232" stroke="#a6b0a1" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M197 452V220h346v232" stroke="url(#frame)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M197 425v27m346-27v27" stroke="#d73c20" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="411" cy="468" r="37" fill="#fff" stroke="#d2d8cd" stroke-width="2"/>
+  <path d="m411 450 15 11-6 17h-19l-6-17z" fill="#353c34"/><path d="m379 453 16 8m31 0 17-9m-23 26 10 18m-29-18-11 17m21-45v-18" stroke="#a6afa1" stroke-width="2"/><path d="m385 442-6 11-4 7m68-8-5-9-8-7m-40 59 10 8m30-7-10 8" stroke="#353c34" stroke-width="6"/>
+</svg>

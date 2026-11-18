@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <defs><pattern id="mesh" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 0h20v20" stroke="#7c887b" stroke-width="1.5"/></pattern></defs>
+  <path fill="#f1f1ed" d="M0 0h800v600H0z"/><ellipse cx="410" cy="505" rx="253" ry="24" fill="#dedfd8"/>
+  <path d="m374 305 163-25 92 51-164 29z" fill="#343e34"/>
+  <circle cx="437" cy="302" r="34" fill="#c86a3f"/><path d="M404 298h65m-32-30v68m-22-60c25 13 40 29 44 51" stroke="#84472f" stroke-width="2"/>
+  <circle cx="507" cy="294" r="34" fill="#f6f5ed"/><path d="m503 278 14 6v17l-16 5-10-14z" fill="#3f4c3c"/><path d="m503 278-1-17m15 23 20-2m-20 19 11 17m-27-12-13 14m3-28-17-5" stroke="#a7afa2" stroke-width="2"/>
+  <circle cx="569" cy="320" r="34" fill="#c86a3f"/><path d="M536 318h65m-32-31v67m-21-59c26 15 36 30 41 51" stroke="#84472f" stroke-width="2"/>
+  <path d="m375 307 90 51v98l-90-47z" fill="url(#mesh)" stroke="#4a5948" stroke-width="5"/>
+  <path d="m465 358 163-29v98l-163 29z" fill="url(#mesh)" stroke="#4a5948" stroke-width="5"/>
+  <path d="M375 307v159m90-108v132m163-161v132M537 280v-32l54-9 37 22v68" stroke="#354333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m537 248 54-9" stroke="#d73c20" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#303a2e"><circle cx="375" cy="472" r="14"/><circle cx="465" cy="496" r="14"/><circle cx="628" cy="467" r="14"/></g>
+  <path d="m186 482 53-14 64 18-53 15z" fill="#b5311d"/><path d="m199 474 39-121 47 124-37 11z" fill="#d73c20"/><path d="m238 353 47 124-37 11z" fill="#c0341b"/><path d="m219 412 41 1 10 27-60-2z" fill="#f6f4ea"/>
+  <path d="m288 502 68-19 42 13-68 20z" fill="#343f32"/><path d="m300 499 68-19m-43 26 67-19" stroke="#d73c20" stroke-width="7"/>
+  <path d="m203 510 37 7 30-8-37-6z" fill="#d7bd43"/><path d="m209 502 24-5 27 10-26 8z" fill="#e7cf5a"/>
+</svg>

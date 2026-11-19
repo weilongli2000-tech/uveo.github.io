@@ -8,7 +8,7 @@ const equipment = [
     description: "面向校园、社区与训练场的篮架配套。根据室内外环境、使用人群和场地条件，确认安装方式、篮板配置及立柱防护；固定式篮架需结合现场基础条件确定安装方案。",
     specs: ["配置范围：篮架、篮板、篮圈及篮网", "使用场景：校园、社区、俱乐部球场", "采购前确认：安装基础、使用年龄与活动空间"],
     options: ["固定式篮架", "移动式篮架", "儿童可调节篮架"], unit: "套",
-    image: "assets/equipment/basketball-hoop.svg"
+    image: "assets/equipment/basketball-hoop.webp"
   },
   {
     id: "eq-net", name: "球网与网柱", group: "设施配套", tag: "球场配套",
@@ -17,7 +17,7 @@ const equipment = [
     description: "按运动项目搭配球网、网柱与张紧配件。专用场可选择固定网柱，多功能场与临时活动可了解移动式球网；具体长度、高度、底座与固定方式需按实际使用场地确认。",
     specs: ["适用项目：网球、匹克球、羽毛球", "配套选择：球网、网柱、张紧及固定配件", "采购前确认：项目类型、场宽与固定方式"],
     options: ["网球网柱与球网", "匹克球移动球网", "羽毛球网柱与球网"], unit: "套",
-    image: "assets/equipment/court-net.svg"
+    image: "assets/equipment/court-net.webp"
   },
   {
     id: "eq-goal", name: "足球门", group: "设施配套", tag: "球门系统",
@@ -26,7 +26,7 @@ const equipment = [
     description: "为校园训练、社区球场与足球场配套球门。根据场制、场地面层和维护安排选择尺寸及材质，确认球网与固定配件；使用前需核对稳固措施，移动球门也需按产品要求固定。",
     specs: ["尺寸选择：按场制与训练需求确认", "配套选择：门框、球网与固定配件", "采购前确认：场地面层、固定及搬运条件"],
     options: ["五人制球门", "七人制球门", "十一人制球门"], unit: "套",
-    image: "assets/equipment/football-goal.svg"
+    image: "assets/equipment/football-goal.webp"
   },
   {
     id: "eq-fence", name: "场地围网", group: "设施配套", tag: "周界设施",
@@ -35,16 +35,16 @@ const equipment = [
     description: "围绕场地边界、通行入口与相邻空间设计围网配套。根据使用环境确定网片、立柱、防腐处理和门体配置，数量与安装范围需结合现场测量及基础条件确认。",
     specs: ["配套范围：网片、立柱、连接件与门体", "适用场景：球场周界与分区隔离", "采购前确认：周长、高度、入口与基础条件"],
     options: ["围网与立柱配套", "围网门体", "局部网片更换"], unit: "组",
-    image: "assets/equipment/court-fence.svg"
+    image: "assets/equipment/court-fence.webp"
   },
   {
-    id: "eq-rackets", name: "球拍与球类", group: "运动用品", tag: "运动用品",
-    sports: ["篮球类", "匹克球类", "足球类", "羽毛球类", "网球类"],
-    summary: "训练与日常运动所需的球拍、球及耗材",
-    description: "为教学、训练和日常运动搭配球拍、球类及常用耗材。可按运动项目、使用频率、年龄与人数整理采购清单，具体型号、包装数量与适用场地在选购时确认。",
-    specs: ["运动项目：篮球、足球、网球、羽毛球与匹克球", "用品选择：球拍、球类及日常替换耗材", "采购前确认：运动项目、用途与采购数量"],
-    options: ["球拍与配套用球", "篮球与足球", "教学训练用品组合"], unit: "组",
-    image: "assets/equipment/rackets-balls.svg"
+    id: "eq-team-uniforms", name: "球服", group: "运动用品", tag: "团队服装",
+    sports: ["篮球类", "足球类", "羽毛球类", "田径类"],
+    summary: "篮球服、足球服、羽毛球服与田径服",
+    description: "适合学校、俱乐部和运动队批量采购训练服或比赛队服。按运动项目选择配置，询价时可补充款式、颜色、尺码和各尺码数量。",
+    specs: ["服装类别：篮球服、足球服、羽毛球服、田径服", "尺码、面料与套装内容按具体款式确认", "如需队名或号码，请在询价备注中注明"],
+    options: ["篮球服", "足球服", "羽毛球服", "田径服"], unit: "套",
+    image: "assets/equipment/team-uniforms.webp"
   },
   {
     id: "eq-training", name: "训练与收纳", group: "训练辅助", tag: "训练辅助",
@@ -53,7 +53,7 @@ const equipment = [
     description: "从基础体能到分组教学，搭配标志碟、训练锥与敏捷梯等辅助器材，并整理球车及收纳需求。按训练人数、课程内容和存放空间确认组合与数量。",
     specs: ["训练辅助：训练锥、标志碟与敏捷梯", "收纳配套：球车、器材架与收纳袋", "采购前确认：训练人数、组合与存放空间"],
     options: ["基础训练组合", "标志碟与训练锥", "球车与器材收纳"], unit: "组",
-    image: "assets/equipment/training-storage.svg"
+    image: "assets/equipment/training-storage.webp"
   },
   {
     id: "eq-basketball-balls", name: "篮球与训练用球", group: "运动用品", tag: "篮球用品",
@@ -62,7 +62,7 @@ const equipment = [
     description: "按校园教学、团队训练或日常运动需求选择篮球及配套用品。根据室内外场地、使用年龄、人数与采购预算整理清单，具体用球规格、材质和包装数量询价确认。",
     specs: ["用品范围：篮球、球针、气筒及配套用品", "选择依据：室内外场地、使用年龄与训练用途", "采购前确认：用球规格、数量与配件需求"],
     options: ["篮球采购", "篮球与充气配件", "教学训练用球组合"], unit: "组",
-    image: "assets/equipment/basketball-balls.svg"
+    image: "assets/equipment/basketball-balls.webp"
   },
   {
     id: "eq-pickleball", name: "匹克球拍与用球", group: "运动用品", tag: "匹克球用品",
@@ -71,7 +71,7 @@ const equipment = [
     description: "为匹克球体验活动、日常训练与教学搭配球拍和用球。根据参与人数、使用频率与场地环境确认球拍配置、室内外用球及替换耗材，型号和组合内容按需求询价。",
     specs: ["用品范围：匹克球拍、用球及配套耗材", "使用场景：体验活动、教学与日常训练", "采购前确认：室内外环境、人数与配置"],
     options: ["匹克球拍采购", "匹克球用球采购", "球拍与用球组合"], unit: "组",
-    image: "assets/equipment/pickleball-kit.svg"
+    image: "assets/equipment/pickleball-kit.webp"
   },
   {
     id: "eq-football-balls", name: "足球与训练用品", group: "运动用品", tag: "足球用品",
@@ -80,7 +80,7 @@ const equipment = [
     description: "围绕校园足球、球队训练与社区活动整理足球及训练用品采购需求。结合使用年龄、场地面层和训练内容选择用球及配件，具体规格、配色、组合与数量在询价时确认。",
     specs: ["用品范围：足球、分队背心及训练辅助用品", "选择依据：年龄、场地与训练安排", "采购前确认：用球规格、人数与组合数量"],
     options: ["足球采购", "足球与充气配件", "分队训练用品组合"], unit: "组",
-    image: "assets/equipment/football-kit.svg"
+    image: "assets/equipment/football-kit.webp"
   },
   {
     id: "eq-badminton", name: "羽毛球拍与用球", group: "运动用品", tag: "羽毛球用品",
@@ -89,7 +89,7 @@ const equipment = [
     description: "为羽毛球教学、社团活动与日常运动配套球拍、用球及耗材。按使用频率、训练人数和采购预算选择组合，球拍型号、用球材质及包装数量在询价时确认。",
     specs: ["用品范围：球拍、羽毛球与手胶等耗材", "使用场景：教学、社团与日常训练", "采购前确认：用球需求、人数与包装数量"],
     options: ["羽毛球拍采购", "羽毛球用球采购", "球拍与用球组合"], unit: "组",
-    image: "assets/equipment/badminton-kit.svg"
+    image: "assets/equipment/badminton-kit.webp"
   },
   {
     id: "eq-volleyball", name: "排球与球网", group: "运动用品", tag: "排球用品",
@@ -98,7 +98,7 @@ const equipment = [
     description: "按校园教学、团队训练和场地使用需求搭配排球、球网与网柱。结合室内外场地、使用人群及安装条件确认配置；网柱、防护与固定范围需按现场条件另行确认。",
     specs: ["用品范围：排球、球网、网柱与配套用品", "配套依据：室内外环境与场地使用需求", "采购前确认：网柱固定、网高配置与数量"],
     options: ["排球采购", "排球网与网柱", "排球教学配套组合"], unit: "组",
-    image: "assets/equipment/volleyball-kit.svg"
+    image: "assets/equipment/volleyball-kit.webp"
   },
   {
     id: "eq-table-tennis", name: "乒乓球台与用品", group: "运动用品", tag: "乒乓球用品",
@@ -107,7 +107,7 @@ const equipment = [
     description: "为学校、社区与活动空间整理乒乓球台及用品需求。按室内外环境、使用频率和收纳条件选择球台及配套用品，具体型号、运输与安装范围按需求询价确认。",
     specs: ["用品范围：球台、球拍、乒乓球与球网", "选择依据：室内外场景、使用频率与收纳空间", "采购前确认：球台配置、数量与交付条件"],
     options: ["乒乓球台采购", "球拍与用球组合", "球台与用品配套"], unit: "组",
-    image: "assets/equipment/table-tennis-kit.svg"
+    image: "assets/equipment/table-tennis-kit.webp"
   },
   {
     id: "eq-fitness", name: "健身器材", group: "设施配套", tag: "健身器材",
@@ -116,7 +116,7 @@ const equipment = [
     description: "根据训练目标、使用人数和可用空间整理健身器材采购需求。可按力量训练、有氧训练及配套用品分类询价，设备型号、配置、安装条件与维护安排需逐项确认。",
     specs: ["器材方向：力量训练、有氧训练与健身配套", "选择依据：训练目标、空间与使用人数", "采购前确认：设备配置、安装及维护需求"],
     options: ["力量训练器材", "有氧训练器材", "健身配套用品"], unit: "组",
-    image: "assets/equipment/fitness-kit.svg"
+    image: "assets/equipment/fitness-kit.webp"
   },
   {
     id: "eq-tennis", name: "网球拍与用球", group: "运动用品", tag: "网球用品",
@@ -125,7 +125,7 @@ const equipment = [
     description: "按网球教学、俱乐部训练与日常运动需求选择球拍、用球和配件。结合使用年龄、训练频率与场地条件整理采购清单，具体球拍型号、用球及组合数量在询价时确认。",
     specs: ["用品范围：网球拍、网球、手胶等配件", "使用场景：教学、训练与日常运动", "采购前确认：年龄、型号与采购数量"],
     options: ["网球拍采购", "网球训练用球", "球拍与用球组合"], unit: "组",
-    image: "assets/equipment/tennis-kit.svg"
+    image: "assets/equipment/tennis-kit.webp"
   },
   {
     id: "eq-athletics", name: "田径训练器材", group: "训练辅助", tag: "田径器材",
@@ -134,6 +134,6 @@ const equipment = [
     description: "围绕校园体育与田径训练，按跑、跳、投等训练内容整理器材需求。结合使用年龄、训练人数和场地条件选择组合，具体器材规格、适用范围与收纳安排在询价时确认。",
     specs: ["器材方向：跨栏、起跑与投掷训练配套", "选择依据：训练项目、使用年龄与场地", "采购前确认：器材规格、数量与存放条件"],
     options: ["跨栏训练器材", "起跑与跑步训练器材", "投掷训练配套器材"], unit: "组",
-    image: "assets/equipment/athletics-kit.svg"
+    image: "assets/equipment/athletics-kit.webp"
   }
 ];

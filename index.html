@@ -8,10 +8,12 @@
   <title>UVEO｜体育场地 · 设施装备</title>
   <link rel="icon" href="assets/uveo-logo.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="customer.css">
   <script src="company.js" defer></script>
   <script src="venues.js" defer></script>
   <script src="venue-guides.js" defer></script>
   <script src="equipment.js" defer></script>
+  <script src="discovery.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -31,11 +33,17 @@
       <button class="search-trigger" data-action="search" aria-label="搜索场地、服务与装备"><i data-icon="search"></i><span>搜索</span></button>
       <button class="icon desktop-heart" data-action="saved" aria-label="收藏的场地百科"><i data-icon="heart"></i></button>
       <button class="icon bag-icon" data-action="bag" aria-label="项目需求清单"><i data-icon="clipboard"></i><span class="bag-count" hidden></span></button>
+      <a class="header-quote" href="#contact/quote">项目询价</a>
     </div>
   </header>
   <main id="main" tabindex="-1"></main>
   <footer><div class="foot-top"><div><a href="#" class="brand foot-brand" aria-label="UVEO 首页"><img src="assets/uveo-logo-white.png" alt="UVEO"></a><p class="footer-tagline">造好场，配好装备。</p><p class="footer-company">广州德斐体育咨询有限公司</p></div><nav aria-label="页脚导航"><a href="#venues">场地类型</a><a href="#services">建设与维护服务</a><a href="#equipment">设施装备</a><a href="#about">关于我们</a><a href="#contact">联系我们</a><button data-action="help">服务说明</button></nav></div><div class="footer-contact"><a href="tel:13710986758">电话 / 微信：13710986758</a><a href="mailto:504894325@qq.com">邮箱：504894325@qq.com</a><span>广东省广州市黄埔区</span><span>营业时间：08:00–24:00 · 服务广东全省</span></div><div class="foot-bottom"><span>© 2026 UVEO · 广州德斐体育咨询有限公司</span><span>体育场地建设 · 体育设施建设 · 体育用品批发</span></div></footer>
   <dialog id="panel" aria-labelledby="panel-title"><div id="panel-content"></div></dialog>
+  <nav class="mobile-quick-nav" aria-label="快捷操作">
+    <a href="tel:13710986758"><i data-icon="phone"></i>电话咨询</a>
+    <button type="button" data-action="bag"><i data-icon="clipboard"></i><span>需求清单 <span data-brief-count>0</span></span></button>
+    <a href="#contact/quote"><i data-icon="arrow"></i>项目询价</a>
+  </nav>
   <div id="toast" role="status"></div>
 </body>
 </html>
